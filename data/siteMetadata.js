@@ -6,7 +6,7 @@ const siteMetadata = {
   description: 'Tekuna menyajikan berita sains dan teknologi terbaru, inovasi terkini, serta perkembangan dunia digital secara akurat dan informatif.',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
+  siteUrl: 'https://www.tekuna.my.id',
   siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
