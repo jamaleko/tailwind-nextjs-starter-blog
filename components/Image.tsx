@@ -5,7 +5,7 @@ const basePath = process.env.BASE_PATH
 const Image = ({ src, ...rest }: ImageProps) => (
   <NextImage
     unoptimized
-    src={${basePath || ''}${src}}
+    src={`${basePath || ''}${src}`}
     {...rest}
   />
 )
