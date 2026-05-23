@@ -21,15 +21,9 @@ export default function Footer() {
         </div>
         <div className="mb-2 flex flex-wrap items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
   <div>{siteMetadata.author}</div>
-
   <div>{` • `}</div>
-
-  <div className="whitespace-nowrap">
-    © {new Date().getFullYear()}
-  </div>
-
+  <div className="whitespace-nowrap">© {new Date().getFullYear()}</div>
   <div>{` • `}</div>
-
   <Link href="/">{siteMetadata.title}</Link>
 </div>
       </div>
