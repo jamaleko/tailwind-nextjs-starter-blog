@@ -23,7 +23,7 @@ export default function Page() {
       <div className="py-8">
         <MDXLayoutRenderer
           code={content.body.code}
-          components={components}
+          components={components as any}
         />
       </div>
     </div>
