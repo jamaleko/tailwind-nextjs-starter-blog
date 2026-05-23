@@ -15,7 +15,7 @@ export default function Page() {
         <h1 className="text-3xl font-extrabold">{content.title}</h1>
       </div>
 
-      <div className="py-8">
+      <div className="prose dark:prose-invert max-w-none py-8">
         <MDXLayoutRenderer code={content.body.code} />
       </div>
     </div>
