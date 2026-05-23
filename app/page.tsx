@@ -4,6 +4,9 @@ import Main from './Main'
 
 export default async function Page() {
   const sortedPosts = sortPosts(allBlogs)
-  const posts = allCoreContent(sortedPosts)
+  const posts = allCoreContent(sortedPosts).map((post) => ({
+  ...post,
+  path: post.path.replace(/^blog/, 'berita'),
+}))
   return <Main posts={posts} />
 }
