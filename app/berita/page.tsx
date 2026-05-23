@@ -9,9 +9,7 @@ export const metadata = genPageMetadata({
   title: 'Berita',
 })
 
-export default async function BeritaPage(props: {
-  searchParams: Promise<{ page: string }>
-}) {
+export default async function BeritaPage(props: { searchParams: Promise<{ page: string }> }) {
   const posts = allCoreContent(sortPosts(allBlogs))
   const pageNumber = 1
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
