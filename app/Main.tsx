@@ -23,7 +23,7 @@ export default function Home({ posts }) {
                       <img
                         src={images?.[0] || '/static/images/avatar.png'}
                         alt={title}
-                        className="h-48 w-full rounded-lg object-cover"
+                        className="h-full min-h-[180px] w-full rounded-lg object-cover"
                       />
                     </div>
 
