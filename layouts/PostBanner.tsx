@@ -39,6 +39,7 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
               <PageTitle>{title}</PageTitle>
           
             <div className="mt-3 text-center text-gray-500 dark:text-gray-400">
+              <em>Published: </em>
               <time dateTime={date}>
                 {new Date(date).toLocaleDateString(siteMetadata.locale, {
                   year: 'numeric',
