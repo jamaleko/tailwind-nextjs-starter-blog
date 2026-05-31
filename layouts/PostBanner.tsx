@@ -19,20 +19,17 @@ interface LayoutProps {
 function relativeTime(date: string) {
   const t = new Date(date)
 
-  let diff = Date.now() - t.getTime()
-
-  // kalau timestamp masa depan
-  if (diff < 0) {
-    diff = 0
+  if (isNaN(t.getTime())) {
+    return date
   }
 
-  const seconds = Math.floor(diff / 1000)
+  const diffMs = Math.abs(Date.now() - t.getTime())
 
-  if (seconds < 5) {
+  const minutes = Math.floor(diffMs / 60000)
+
+  if (minutes < 1) {
     return 'baru saja'
   }
-
-  const minutes = Math.floor(seconds / 60)
 
   if (minutes < 60) {
     return `${minutes} menit lalu`
@@ -49,8 +46,7 @@ function relativeTime(date: string) {
     month: 'long',
     year: 'numeric',
   })
-    }
-export default function PostMinimal({ content, next, prev, children }: LayoutProps) {
+                              }export default function PostMinimal({ content, next, prev, children }: LayoutProps) {
   const { slug, title, images, date } = content
   const displayImage =
     images && images.length > 0 ? images[0] : 'https://picsum.photos/seed/picsum/800/400'
