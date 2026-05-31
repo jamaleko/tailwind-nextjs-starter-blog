@@ -19,25 +19,30 @@ interface LayoutProps {
 function relativeTime(date: string) {
   const t = new Date(date)
 
-  console.log('DATE:', date)
-  console.log('GETTIME:', t.getTime())
-  console.log('NOW:', Date.now())
+  const diff = (Date.now() + 7 * 60 * 60 * 1000) - t.getTime()
 
-  const diffMs = Math.abs(Date.now() - t.getTime())
+  const minutes = Math.floor(diff / 60000)
 
-  console.log('DIFF HOURS:', diffMs / 3600000)
+  if (minutes < 1) {
+    return 'baru saja'
+  }
 
-  const minutes = Math.floor(diffMs / 60000)
-
-  if (minutes < 1) return 'baru saja'
-  if (minutes < 60) return `${minutes} menit lalu`
+  if (minutes < 60) {
+    return `${minutes} menit lalu`
+  }
 
   const hours = Math.floor(minutes / 60)
 
-  if (hours < 24) return `${hours} jam lalu`
+  if (hours < 24) {
+    return `${hours} jam lalu`
+  }
 
-  return t.toLocaleDateString('id-ID')
-}
+  return t.toLocaleDateString('id-ID', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
+                           }
 export default function PostMinimal({ content, next, prev, children }: LayoutProps) {
   const { slug, title, images, date } = content
   const displayImage =
