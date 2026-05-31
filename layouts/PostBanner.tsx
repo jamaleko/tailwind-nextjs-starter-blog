@@ -19,34 +19,26 @@ interface LayoutProps {
 function relativeTime(date: string) {
   const t = new Date(date)
 
-  if (isNaN(t.getTime())) {
-    return date
-  }
+  console.log('DATE:', date)
+  console.log('GETTIME:', t.getTime())
+  console.log('NOW:', Date.now())
 
   const diffMs = Math.abs(Date.now() - t.getTime())
 
+  console.log('DIFF HOURS:', diffMs / 3600000)
+
   const minutes = Math.floor(diffMs / 60000)
 
-  if (minutes < 1) {
-    return 'baru saja'
-  }
-
-  if (minutes < 60) {
-    return `${minutes} menit lalu`
-  }
+  if (minutes < 1) return 'baru saja'
+  if (minutes < 60) return `${minutes} menit lalu`
 
   const hours = Math.floor(minutes / 60)
 
-  if (hours < 24) {
-    return `${hours} jam lalu`
-  }
+  if (hours < 24) return `${hours} jam lalu`
 
-  return t.toLocaleDateString('id-ID', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  })
-                              }export default function PostMinimal({ content, next, prev, children }: LayoutProps) {
+  return t.toLocaleDateString('id-ID')
+}
+export default function PostMinimal({ content, next, prev, children }: LayoutProps) {
   const { slug, title, images, date } = content
   const displayImage =
     images && images.length > 0 ? images[0] : 'https://picsum.photos/seed/picsum/800/400'
