@@ -16,7 +16,34 @@ interface LayoutProps {
   next?: { path: string; title: string }
   prev?: { path: string; title: string }
 }
+function relativeTime(date: string) {
+  const t = new Date(date)
+  const diff = Date.now() - t.getTime()
 
+  const seconds = Math.floor(diff / 1000)
+
+  if (seconds < 5) {
+    return 'baru saja'
+  }
+
+  const minutes = Math.floor(seconds / 60)
+
+  if (minutes < 60) {
+    return `${minutes} menit lalu`
+  }
+
+  const hours = Math.floor(minutes / 60)
+
+  if (hours < 24) {
+    return `${hours} jam lalu`
+  }
+
+  return t.toLocaleDateString('id-ID', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
+}
 export default function PostMinimal({ content, next, prev, children }: LayoutProps) {
   const { slug, title, images, date } = content
   const displayImage =
@@ -39,13 +66,10 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
               <PageTitle>{title}</PageTitle>
           
             <div className="mt-3 text-center text-gray-500 dark:text-gray-400">
-              <em>Published: </em>
+              <span className="italic">Published: </span>
+          
               <time dateTime={date}>
-                {new Date(date).toLocaleDateString(siteMetadata.locale, {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
+                {relativeTime(date)}
               </time>
             </div>
           </div>
