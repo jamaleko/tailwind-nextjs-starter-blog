@@ -18,7 +18,13 @@ interface LayoutProps {
 }
 function relativeTime(date: string) {
   const t = new Date(date)
-  const diff = Date.now() - t.getTime()
+
+  let diff = Date.now() - t.getTime()
+
+  // kalau timestamp masa depan
+  if (diff < 0) {
+    diff = 0
+  }
 
   const seconds = Math.floor(diff / 1000)
 
@@ -43,7 +49,7 @@ function relativeTime(date: string) {
     month: 'long',
     year: 'numeric',
   })
-}
+    }
 export default function PostMinimal({ content, next, prev, children }: LayoutProps) {
   const { slug, title, images, date } = content
   const displayImage =
