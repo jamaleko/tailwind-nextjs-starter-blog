@@ -19,7 +19,8 @@ interface LayoutProps {
 function relativeTime(date: string) {
   const t = new Date(date)
 
-  const diff = (Date.now() + 7 * 60 * 60 * 1000) - t.getTime()
+  //const diff = (Date.now() + 7 * 60 * 60 * 1000) - t.getTime()
+  const diff = Date.now() - t.getTime()
 
   const minutes = Math.floor(diff / 60000)
 
