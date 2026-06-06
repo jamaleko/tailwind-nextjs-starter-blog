@@ -16,12 +16,19 @@ interface LayoutProps {
   next?: { path: string; title: string }
   prev?: { path: string; title: string }
 }
-function formatDate(date: string) {
-  return new Date(date).toLocaleString('id-ID', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  })
+function formatMdxDate(date: string) {
+  const [d, timePart] = date.split('T')
+  const [year, month, day] = d.split('-')
+
+  const bulan = [
+    'Januari', 'Februari', 'Maret', 'April',
+    'Mei', 'Juni', 'Juli', 'Agustus',
+    'September', 'Oktober', 'November', 'Desember',
+  ]
+
+  const time = timePart.slice(0, 5)
+
+  return `${Number(day)} ${bulan[Number(month)-1]} ${year} • ${time} WIB`
 }
 function relativeTime(date: string) {
   const t = new Date(date)
