@@ -81,10 +81,10 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
           
             <div className="mt-3 text-center text-gray-500 dark:text-gray-400">
               <span className="italic">Published: </span>
-              <div>{date}</div>
-              {/*<time dateTime={date}>
+              {/*<div>{date}</div>*/}
+              <time dateTime={date}>
                 {formatMdxDate(date)}
-              </time>*/}
+              </time>
             </div>
           </div>
           </div>
