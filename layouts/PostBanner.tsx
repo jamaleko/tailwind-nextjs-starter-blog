@@ -16,6 +16,15 @@ interface LayoutProps {
   next?: { path: string; title: string }
   prev?: { path: string; title: string }
 }
+function formatDate(date: string) {
+  return new Date(date).toLocaleString('id-ID', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  })
+}
 function relativeTime(date: string) {
   const t = new Date(date)
 
@@ -69,7 +78,7 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
               <span className="italic">Published: </span>
           
               <time dateTime={date}>
-                {relativeTime(date)}
+                {formatDate(date)}
               </time>
             </div>
           </div>
